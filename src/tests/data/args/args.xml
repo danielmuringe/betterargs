@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test_cli_app>
+    <allow_abbrev>false</allow_abbrev>
+    <description>Test CLI app</description>
+    <add_help>true</add_help>
+    <defaults>
+        <args>
+            <atype>flag</atype>
+            <required>false</required>
+        </args>
+    </defaults>
+    <args>
+        <mutually_exclusive_group>
+            <required>true</required>
+            <path>
+                <atype>flag</atype>
+                <default>.</default>
+                <type>str</type>
+            </path>
+            <version>
+                <atype>flag</atype>
+                <action>store_true</action>
+            </version>
+        </mutually_exclusive_group>
+    </args>
+    <subparsers>
+        <command>
+            <description>Command to run</description>
+            <required>true</required>
+            <parsers>
+                <init>
+                    <description>Initialize the app</description>
+                    <args>
+                        <mutually_exclusive_group>
+                            <verbose>
+                                <action>store_true</action>
+                                <atype>flag</atype>
+                            </verbose>
+                            <quiet>
+                                <action>store_true</action>
+                                <atype>flag</atype>
+                            </quiet>
+                        </mutually_exclusive_group>
+                        <name>
+                            <atype>positional</atype>
+                            <default>test</default>
+                            <required>true</required>
+                            <type>str</type>
+                        </name>
+                    </args>
+                </init>
+                <purge>
+                    <description>Purge the app</description>
+                    <args>
+                        <name>
+                            <atype>positional</atype>
+                            <default>test</default>
+                            <required>true</required>
+                            <type>str</type>
+                        </name>
+                        <force>
+                            <action>store_true</action>
+                            <atype>flag</atype>
+                        </force>
+                    </args>
+                </purge>
+            </parsers>
+        </command>
+    </subparsers>
+</test_cli_app>

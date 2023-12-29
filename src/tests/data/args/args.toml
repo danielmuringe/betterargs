@@ -1,0 +1,54 @@
+[test_cli_app]
+allow_abbrev = false
+description = "Test CLI app"
+add_help = true
+
+[test_cli_app.defaults.args]
+atype = "flag"
+required = false
+
+[test_cli_app.args.mutually_exclusive_group]
+required = true
+
+[test_cli_app.subparsers.command]
+description = "Command to run"
+required = true
+
+[test_cli_app.args.mutually_exclusive_group.path]
+atype = "flag"
+default = "."
+type = "str"
+
+[test_cli_app.args.mutually_exclusive_group.version]
+atype = "flag"
+action = "store_true"
+
+[test_cli_app.subparsers.command.parsers.init]
+description = "Initialize the app"
+
+[test_cli_app.subparsers.command.parsers.purge]
+description = "Purge the app"
+
+[test_cli_app.subparsers.command.parsers.init.args.name]
+atype = "positional"
+default = "test"
+required = true
+type = "str"
+
+[test_cli_app.subparsers.command.parsers.purge.args.name]
+atype = "positional"
+default = "test"
+required = true
+type = "str"
+
+[test_cli_app.subparsers.command.parsers.purge.args.force]
+action = "store_true"
+atype = "flag"
+
+[test_cli_app.subparsers.command.parsers.init.args.mutually_exclusive_group.verbose]
+action = "store_true"
+atype = "flag"
+
+[test_cli_app.subparsers.command.parsers.init.args.mutually_exclusive_group.quiet]
+action = "store_true"
+atype = "flag"

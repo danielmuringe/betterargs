@@ -1,0 +1,71 @@
+{
+    "test_cli_app": {
+        "allow_abbrev": false,
+        "description": "Test CLI app",
+        "add_help": true,
+        "defaults": {
+            "args": {
+                "atype": "flag",
+                "required": false
+            }
+        },
+        "args": {
+            "mutually_exclusive_group": {
+                "required": true,
+                "path": {
+                    "atype": "flag",
+                    "default": ".",
+                    "type": "str"
+                },
+                "version": {
+                    "atype": "flag",
+                    "action": "store_true"
+                }
+            }
+        },
+        "subparsers": {
+            "command": {
+                "description": "Command to run",
+                "required": true,
+                "parsers": {
+                    "init": {
+                        "description": "Initialize the app",
+                        "args": {
+                            "mutually_exclusive_group": {
+                                "verbose": {
+                                    "action": "store_true",
+                                    "atype": "flag"
+                                },
+                                "quiet": {
+                                    "action": "store_true",
+                                    "atype": "flag"
+                                }
+                            },
+                            "name": {
+                                "atype": "positional",
+                                "default": "test",
+                                "required": true,
+                                "type": "str"
+                            }
+                        }
+                    },
+                    "purge": {
+                        "description": "Purge the app",
+                        "args": {
+                            "name": {
+                                "atype": "positional",
+                                "default": "test",
+                                "required": true,
+                                "type": "str"
+                            },
+                            "force": {
+                                "action": "store_true",
+                                "atype": "flag"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

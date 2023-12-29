@@ -1,0 +1,3 @@
+Just random text
+in a file with utf-8 encoding
+for a test
